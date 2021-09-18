@@ -1,6 +1,11 @@
 [
-    {
-        "email": "foo@bar.com",
-        "password": "s3cr3t"
-    }
+  {
+    "email": "foo@bar.com",
+    "password": "s3cr3t"
+  },
+  {
+    "email": "paul@canarius.co.uk",
+    "password": "s3cr3t",
+    "id": "771ddc4f"
+  }
 ]

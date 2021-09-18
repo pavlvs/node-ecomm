@@ -1,14 +1,21 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const usersRepo = require('./repositories/users')
-
+const cookieSession = require('cookie-session')
 const app = express()
+
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(
+    cookieSession({
+        keys: ['lask54djfhgh334ffghjasd9876512'],
+    })
+)
 const port = 3000
 
-app.get('/', (req, res) =>
+app.get('/signup', (req, res) =>
     res.send(/*HTML*/ `
         <div>
+            Your id is: ${req.session.userId}
             <form method="POST" action="">
                 <input name="email" placeholder="email"/>
                 <input name="password" placeholder="password" />
@@ -20,7 +27,7 @@ app.get('/', (req, res) =>
     `)
 )
 
-app.post('/', async (req, res) => {
+app.post('/signup', async (req, res) => {
     const { email, password, passwordConfirmation } = req.body
     const existingUser = await usersRepo.getOneBy({ email })
     if (existingUser) {
@@ -31,9 +38,35 @@ app.post('/', async (req, res) => {
         return res.send('Passwords do not match')
     }
 
+    // Create a user in our user repo to represent this person
+    const user = await usersRepo.create({ email, password })
+
+    // Store the id of that user inside the user's cookie
+    req.session.userId = user.id
+
     console.log(req.body)
     res.send('Account created!')
 })
+
+app.get('/signout', (req, res) => {
+    req.session = null
+    res.send('You are logged out')
+})
+
+app.get('/signin', (req, res) => {
+    res.send(/*HTML*/ `
+        <div>
+            <form method="POST" action="">
+                <input name="email" placeholder="email"/>
+                <input name="password" placeholder="password" />
+                <button>Sign in</button>
+            </form>
+        </div>
+
+    `)
+})
+
+app.post('/signin', async (req, res) => {})
 
 app.listen(port, () => console.log(`Example app listening on port port!`))
 
