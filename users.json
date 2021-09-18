@@ -7,5 +7,10 @@
     "email": "paul@canarius.co.uk",
     "password": "s3cr3t",
     "id": "771ddc4f"
+  },
+  {
+    "email": "test2@test.com",
+    "password": "password",
+    "id": "1a211a0a"
   }
 ]
