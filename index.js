@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const usersRepo = require('./repositories/users')
 const cookieSession = require('cookie-session')
+const authRouter = require('./routes/admin/auth')
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -10,81 +10,9 @@ app.use(
         keys: ['lask54djfhgh334ffghjasd9876512'],
     })
 )
+
+app.use(authRouter)
 const port = 3000
-
-app.get('/signup', (req, res) =>
-    res.send(/*HTML*/ `
-        <div>
-            Your id is: ${req.session.userId}
-            <form method="POST" action="">
-                <input name="email" placeholder="email"/>
-                <input name="password" placeholder="password" />
-                <input name="passwordConfirmation" placeholder="password confirmation" />
-                <button>Sign up</button>
-            </form>
-        </div>
-
-    `)
-)
-
-app.post('/signup', async (req, res) => {
-    const { email, password, passwordConfirmation } = req.body
-    const existingUser = await usersRepo.getOneBy({ email })
-    if (existingUser) {
-        return res.send('Email in use')
-    }
-
-    if (password !== passwordConfirmation) {
-        return res.send('Passwords do not match')
-    }
-
-    // Create a user in our user repo to represent this person
-    const user = await usersRepo.create({ email, password })
-
-    // Store the id of that user inside the user's cookie
-    req.session.userId = user.id
-
-    console.log(req.body)
-    res.send('Account created!')
-})
-
-app.get('/signout', (req, res) => {
-    req.session = null
-    res.send('You are logged out')
-})
-
-app.get('/signin', (req, res) => {
-    res.send(/*HTML*/ `
-        <div>
-            <form method="POST" action="">
-                <input name="email" placeholder="email"/>
-                <input name="password" placeholder="password" />
-                <button>Sign in</button>
-            </form>
-        </div>
-
-    `)
-})
-
-app.post('/signin', async (req, res) => {
-    const { email, password } = req.body
-
-    const user = await usersRepo.getOneBy({ email })
-
-    if (!user) {
-        return res.send('Email not found')
-    }
-    const validPassword = await usersRepo.comparePasswords(
-        user.password,
-        password
-    )
-    if (!validPassword) {
-        return res.send('Invalid password')
-    }
-
-    req.session.userId = user.id
-    res.send('You are signed in')
-})
 
 app.listen(port, () => console.log(`Example app listening on port port!`))
 
