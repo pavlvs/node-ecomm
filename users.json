@@ -1,26 +1,7 @@
 [
   {
-    "email": "foo@bar.com",
-    "password": "s3cr3t"
-  },
-  {
     "email": "paul@canarius.co.uk",
-    "password": "s3cr3t",
-    "id": "771ddc4f"
-  },
-  {
-    "email": "test2@test.com",
-    "password": "password",
-    "id": "1a211a0a"
-  },
-  {
-    "email": "test4@test.com",
-    "password": "6e9c625cb50dfcba26112b79afa491567d66dc3972ff390bd0b50362405f3653fcd364fa428529abea34fecec42d6463846556751d5d62e595bae2078c16c996.802c6dc6416f9bc7",
-    "id": "a6837c0f"
-  },
-  {
-    "email": "test5@test.com",
-    "password": "b79cc85b5fa02048cf588494a5826623e0673398ef724a8e9c7e63a1a157db31ce1034b3843ffd34bd087e8cb012bf1c70c26148526dc5166022edac1c366de5.49a2875b44cd4eca",
-    "id": "c4045601"
+    "password": "7572815d2c494de7fc7570ef6e8ff8408bbc709ddb8be7218d7451a75351bf2168cdfa5b06232dff7e3a9cb74e960472bdafee2e1c0627b5edfab367aeb7d844.4791804dabfcd21f",
+    "id": "3329a184"
   }
 ]
