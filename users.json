@@ -3,5 +3,10 @@
     "email": "paul@canarius.co.uk",
     "password": "7572815d2c494de7fc7570ef6e8ff8408bbc709ddb8be7218d7451a75351bf2168cdfa5b06232dff7e3a9cb74e960472bdafee2e1c0627b5edfab367aeb7d844.4791804dabfcd21f",
     "id": "3329a184"
+  },
+  {
+    "email": "joe@example.com",
+    "password": "6faa05dd1d2440eb70502406540306e73906e4c59116656265aa3a3e01d0c2e8364d54406e2fd9088d1ddcfc5ab1c08684b79a44e35dbe129da91238fe3eae02.033b03da11e0be0e",
+    "id": "b69f47ac"
   }
 ]
