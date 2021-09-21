@@ -78,29 +78,3 @@ router.post('/admin/products/:id/delete', requireAuth, async (req, res) => {
 })
 
 module.exports = router
-
-// al3:: app.listen(3000)
-
-// xaf:: (req, res) => {{}{}}{left}
-
-// xmer:: module.exports = router
-
-// xax:: const app = express()
-
-// xrr:: const router = express.Router()
-
-// xrx:: const express = require('express')
-
-// rflashe:: req.flash('errors', ''){left 2}
-
-// rflashs:: req.flash('success', ''){left 2}
-
-// rredirect:: res.redirect(''}{left 2}
-
-// rsend:: res.send(''}{left 2}
-
-// rsessu:: req.session.userId
-
-// routeg:: router.post('/', (req, res) => {{}{})
-
-// routep:: router.post('/', [], (req, res) => {{}{}})
