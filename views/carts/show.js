@@ -6,7 +6,7 @@ module.exports = ({ items }) => {
     }, 0)
     const renderedItems = items
         .map((item) => {
-            return `
+            return /*html*/ `
         <div class="cart-item message">
           <h3 class="subtitle">${item.product.title}</h3>
           <div class="cart-right">
@@ -17,7 +17,8 @@ module.exports = ({ items }) => {
               $${item.product.price * item.quantity}
             </div>
             <div class="remove">
-              <form method="POST">
+              <form method="POST" action="/cart/products/delete">
+              <input hidden name="itemId" id="" value="${item.id}">
                 <button class="button is-danger">
                   <span class="icon is-small">
                     <i class="fas fa-times"></i>
@@ -32,7 +33,7 @@ module.exports = ({ items }) => {
         .join('')
 
     return layout({
-        content: `
+        content: /*html*/ `
       <div id="cart" class="container">
         <div class="columns">
           <div class="column"></div>
